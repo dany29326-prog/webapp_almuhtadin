@@ -438,23 +438,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 if (activeIndex === 0) {
                     if (navBeranda) navBeranda.classList.add("active");
-                } else if (activeIndex === 1) {
+                } else if (activeIndex >= 1) {
                     if (navLainnya) navLainnya.classList.add("active");
                 }
 
-                // ===== SMART SNAP-REST AUTO-HIDE NAVBAR =====
+                // ===== SMART AUTO-HIDE NAVBAR =====
                 if (bottomNav) {
-                    const remainder = scrollTop % screenHeight;
-                    // Cek apakah posisi scroll berada tepat di/sangat dekat rest-state halaman
-                    const isAtScreenRest = (remainder < 5) || (screenHeight - remainder < 5);
-                    // Cek apakah scroll telah mencapai bagian paling bawah dari kontainer (Screen 3)
+                    // Cek apakah scroll telah mencapai bagian paling bawah dari kontainer
                     const isAtBottom = (scrollTop + screenHeight >= appContainer.scrollHeight - 10);
 
-                    if (scrollTop < 50 || isAtScreenRest || isAtBottom) {
-                        // Selalu tampilkan di paling atas, saat snap-scroll selesai mengunci halaman, atau di paling bawah
+                    if (scrollTop < 50 || isAtBottom) {
+                        // Selalu tampilkan di paling atas atau paling bawah
                         bottomNav.classList.remove("nav-hidden");
                     } else if (scrollTop > lastScrollTop) {
-                        // Gulir ke bawah (sedang transisi) -> Sembunyikan navbar
+                        // Gulir ke bawah -> Sembunyikan navbar
                         bottomNav.classList.add("nav-hidden");
                     } else {
                         // Gulir ke atas -> Tampilkan navbar kembali

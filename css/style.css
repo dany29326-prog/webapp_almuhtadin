@@ -15,8 +15,8 @@ body {
     max-width: 480px;
     height: 100dvh;
     background-color: #f7f9fa;
-    overflow-y: scroll;
-    scroll-snap-type: y proximity;
+    overflow-y: auto;
+    scroll-behavior: smooth;
     scrollbar-width: none;
     position: relative;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -27,8 +27,6 @@ body {
 .screen-section {
     width: 100%;
     min-height: 100dvh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     display: flex;
     flex-direction: column;
     position: relative;
