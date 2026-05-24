@@ -414,11 +414,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLainnya = document.getElementById("nav-lainnya");
 
     if (appContainer) {
+        const sections = [
+            document.getElementById("sec-beranda"),
+            document.getElementById("sec-fitur"),
+            document.getElementById("sec-amal")
+        ];
+
         if (scrollDots.length > 0) {
             appContainer.addEventListener("scroll", function () {
                 const screenHeight = appContainer.clientHeight;
                 const scrollTop = appContainer.scrollTop;
-                const activeIndex = Math.round(scrollTop / screenHeight);
+                
+                // Deteksi activeIndex secara dinamis berdasarkan posisi scroll
+                let activeIndex = 0;
+                sections.forEach((sec, idx) => {
+                    if (sec) {
+                        // Jika posisi scroll sudah melewati batas atas section dikurangi sepertiga layar
+                        if (scrollTop >= sec.offsetTop - screenHeight / 3) {
+                            activeIndex = idx;
+                        }
+                    }
+                });
 
                 scrollDots.forEach((dot, idx) => {
                     if (idx === activeIndex) {
@@ -471,11 +487,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Click to scroll to screen (Dots)
             scrollDots.forEach((dot, idx) => {
                 dot.addEventListener("click", function () {
-                    const screenHeight = appContainer.clientHeight;
-                    appContainer.scrollTo({
-                        top: idx * screenHeight,
-                        behavior: "smooth"
-                    });
+                    const targetSec = sections[idx];
+                    if (targetSec) {
+                        appContainer.scrollTo({
+                            top: targetSec.offsetTop,
+                            behavior: "smooth"
+                        });
+                    }
                 });
             });
 
@@ -493,11 +511,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if (navLainnya) {
                 navLainnya.addEventListener("click", function (e) {
                     e.preventDefault();
-                    const screenHeight = appContainer.clientHeight;
-                    appContainer.scrollTo({
-                        top: screenHeight, // Screen 2
-                        behavior: "smooth"
-                    });
+                    const targetSec = document.getElementById("sec-fitur");
+                    if (targetSec) {
+                        appContainer.scrollTo({
+                            top: targetSec.offsetTop,
+                            behavior: "smooth"
+                        });
+                    }
                 });
             }
         }
