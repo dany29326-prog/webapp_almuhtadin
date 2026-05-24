@@ -838,3 +838,77 @@ body {
 .legend-box.jumat { background: #e6f4ea; }
 .legend-box.ayyamul-bidh { background: #fcf6e3; border: 1px solid rgba(212, 175, 55, 0.3); }
 .legend-box.today { background: #043927; }
+
+/* =========================================
+   9. STATISTIK PENGUNJUNG CARD
+   ========================================= */
+.kunjungan-container {
+    padding: 0 5px;
+    margin-top: 4px;
+}
+.kunjungan-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 16px 20px;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+.kunjungan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.kunjungan-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.kunjungan-icon-symbol {
+    font-size: 1.1rem;
+}
+.kunjungan-title {
+    color: #0c1a30;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.status-online-badge {
+    background: rgba(111, 207, 151, 0.15);
+    color: #27ae60;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(111, 207, 151, 0.25);
+    animation: status-pulse 2s infinite;
+}
+@keyframes status-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.kunjungan-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.kunjungan-item {
+    background: #f7f9fa;
+    border-radius: 12px;
+    padding: 10px 12px;
+    border: 1px solid #f0f2f5;
+}
+.kunjungan-label {
+    color: #718096;
+    font-size: 0.6rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+}
+.kunjungan-number {
+    color: #043927;
+    font-size: 1rem;
+    font-weight: 700;
+}
